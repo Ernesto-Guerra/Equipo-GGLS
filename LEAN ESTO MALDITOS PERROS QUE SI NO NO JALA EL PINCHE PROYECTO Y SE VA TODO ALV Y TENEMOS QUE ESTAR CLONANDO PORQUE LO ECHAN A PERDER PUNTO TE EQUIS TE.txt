@@ -1,0 +1,34 @@
+El proyecto esta dividido en dos carpetas....
+Joinder-recargado es la parte de backend
+El otro pues front >:c
+
+Y hay pasos para que jale esta cosa pues, no de a gratis va a servir.....
+
+1. Modificar el archivo .env para que conecte con su base de datos
+
+2. Ir a la carpeta de joinder-recargado en consola
+
+3. utilizar el comando "php artisan migrate --seed"  //Esto generará usuarios y preguntas en la base de datos
+
+4. utilizar el comando "php artisan passport:install"  //Esto genera llaves para no se que cosa pero es necesario IMPORTANTE!!! SOLO HACERLO UNA VEZ QUE SI NO SE MUERE TODO
+
+5. ir a la base de datos en la tabla "oauth_clientes" y copiar el secret de la segunda fila
+
+6. abrir la carpeta del frontend y buscar el componente "Login"
+
+7. Este componente tiene una variable llamada "client_secret"
+
+8. Sustituir el valor de esta variable por el valor que copiamos antes
+
+9. Iniciar el backend
+
+10. Iniciar el frontend
+
+11. Trabajar
+
+12. Manejar toda la nomenclatura en ingles, con ortografia y siguiendo el formate de upper/lower camel case según sea el caso
+
+13. No echar a perder el proyecto DE NUEVO!!!!!
+
+
+GRACIAS, NO LA CAGUEN, SOLO MARTIN TIENE DERECHO A MODIFICAR LOS COMPONENTES... FIN
