@@ -1,6 +1,32 @@
 <template>
   <div>
-    <div class="card">
+      <v-layout >
+    <v-flex >
+      <v-card  >
+        <v-card-title >
+          <div>
+<div>
+ <h6>{{user.name}}</h6>
+</div>
+<br>
+            <div>  {{answer.answer}}</div>
+            <br>
+                 <span class="grey--text">            Publicado:{{answer.created_at}}       </span><br>
+          </div>
+        </v-card-title>
+
+        <v-card-actions>
+      
+
+          <v-btn   flat color="orange">Explore</v-btn>                   
+         
+         
+        </v-card-actions>
+      </v-card>
+    </v-flex>
+  </v-layout>   
+  <br>
+    <!-- <div class="card">
       <div class="card-header">{{user.name}}</div>
       <div class="card-body">
         {{answer.answer}}
@@ -10,8 +36,8 @@
         </footer>
       </div>
     </div>
-    <br>
-  </div>
+    <br>-->
+  </div> 
 </template>
 
 <script>

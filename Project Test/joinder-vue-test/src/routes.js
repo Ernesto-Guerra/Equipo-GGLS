@@ -5,12 +5,24 @@ import Register from './components/authentication/Register.vue'
 import Feed from './components/Feed.vue'
 import MakeQuestion from './components/question/MakeQuestion.vue'
 import QuestionDetails from './components/question/QuestionDetails'
-
+import Welcome from './components/welcome/welcome.vue'
+import Navbar from './components/Navbar/NavbarGuest.vue'
+import NavbarUser from './components/Navbar/NavbarUser.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
     mode:'history',
     routes:[
+        {
+            path:"/navbar",
+            component:NavbarUser,
+      
+        },
+        {
+            path:"/welcome",
+            component:Welcome,
+      
+        },
         {
             path:"/login",
             component:Login,

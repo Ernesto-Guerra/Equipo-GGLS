@@ -1,5 +1,41 @@
 <template>
-  <div>
+<div>
+   <v-app id="inspire">
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center>
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-toolbar dark color="dark">
+                <v-toolbar-title style="margin-left:40%;" justify-center>Login </v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-tooltip right>
+                  <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank">
+                    <v-icon large>mdi-codepen</v-icon>
+                  </v-btn>
+                  <span>Codepen</span>
+                </v-tooltip>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field prepend-icon="person" v-model="email" name="login" label="Login" type="text"></v-text-field>
+                  <v-text-field id="password" v-model="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                  <v-btn block  @click="login()" color="error" style="margin-right:30%" dark>login</v-btn>
+                
+              </v-card-actions>
+<div class="text-xs-center" style="margin-top:5%">No tengo mi cuenta todavía, quiero <a href="/signup?entry=2" class="sg-text sg-text--xsmall sg-text--link sg-text--bold sg-text--blue">registrarme</a>.</div>
+<br>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
+<!-- <div>
     <navbar-guest></navbar-guest><br>
     <div class="row justify-content-center">      
       <div class="col col-xs-10 col-sm-6">      
@@ -20,7 +56,10 @@
         </div>
       </div>      
     </div>
-  </div>
+  </div>-->
+
+</div> 
+  
 </template>
 
 <script>
@@ -40,7 +79,7 @@ export default {
     login(){
       var data ={
         client_id:2,
-        client_secret:'UWVdenR1iOHZxToGp2O5clcE6SInIdQaGSNQm9R2',
+        client_secret:'8l4pFVugKTszvDCkh9pBc5OlpIpFpNtZshatqwKn',
         grant_type:'password',
         username:this.email,
         password:this.password

@@ -6,12 +6,16 @@
 
 <script>
 
-export default {  
-  name: 'app',
-  components: {        
+
+export default {
+  name: 'App',
+  components: {
+  
+  },
+  data () {
+    return {
+      //
+    }
   }
 }
 </script>
-
-<style>
-</style>

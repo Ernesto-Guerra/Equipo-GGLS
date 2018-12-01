@@ -10,15 +10,29 @@
     <br>
     <div class="row justify-content-center">
       <div class="col col-sm-8">
-        <h4>Respuestas</h4>        
-        <textarea class="form-control border border-secondar rounded" v-model="answer"></textarea>
-
-        <div class="row justify-content-end">
+        <v-layout>
+          <v-flex>
+            <v-card>
+              <v-card-title primary-title>
+                <div>
+                  <h4 class="headline mb-0">Respuesta</h4>
+                </div>
+              </v-card-title>
+              <div>
+                <v-textarea outline name="input-7-4" label="Respuesta" v-model="answer"></v-textarea>
+              </div>
+              <v-card-actions>
+                <v-btn flat @click="sendAnswer()" color="orange">responder</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+        <!-- <div class="row justify-content-end">
           <div class="col col-sm-2">
             <button @click="sendAnswer()" class="btn btn-info">Responder</button>
           </div>
-        </div>
-
+        </div>-->
+<br>
         <div v-if="ready">
           <div class="row" v-for="answer in answers" :key="answer.id">
               <div class="col col-sm-12">
@@ -34,7 +48,7 @@
 <script>
 import Question from "./Question.vue";
 import NavbarUser from "../NavbarUser.vue";
-import Answer from '../answer/Answer.vue'
+import Answer from "../answer/Answer.vue";
 
 export default {
   props: {},
@@ -45,7 +59,7 @@ export default {
       ready: false,
       answer: "",
       answers: [],
-      user_id:''
+      user_id: ""
     };
   },
   components: {
@@ -75,24 +89,21 @@ export default {
           .then(response => {
             this.user = response.body;
             this.ready = true;
-            this.user_id=this.$auth.getUserId()
+            this.user_id = this.$auth.getUserId();
           });
       });
   },
   methods: {
     sendAnswer() {
-    
       let data = {
         answer: this.answer,
         question_id: this.question.id,
         user_id: this.user_id
       };
 
-    
-
       this.$http.post("api/answer", data).then(response => {
         this.answers.push(response.body);
-        this.answer = ""
+        this.answer = "";
       });
     }
   }

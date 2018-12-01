@@ -1,8 +1,11 @@
 import Vue from 'vue'
+import './plugins/vuetify'
+import './plugins/vuetify'
 import App from './App.vue'
 import Router from './routes.js'
 import VueResource from 'vue-resource'
-
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
 import Auth from './packages/auth/Auth.js'
 
 Vue.config.productionTip = false

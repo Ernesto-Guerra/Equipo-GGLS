@@ -3,7 +3,9 @@
     <div v-for="question in questions" :key="question.id">
       {{findUser(question.user_id)}}
       <question :question="question" :user="user"></question>      
+    <br>
     </div>
+    
   </div>
 </template>
 
