@@ -19,7 +19,7 @@ const router = new VueRouter({
       
         },
         {
-            path:"/welcome",
+            path:"/",
             component:Welcome,
       
         },
