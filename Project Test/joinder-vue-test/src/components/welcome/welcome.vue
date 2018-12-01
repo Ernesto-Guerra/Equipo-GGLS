@@ -13,11 +13,26 @@
            
             <h1 class="white--text mb-2 display-1 text-xs-center">Parallax Template</h1>
             <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
+            <div>
+  <v-card-text>
+     <v-autocomplete style="background-color:white;width:220%;margin-left:-55%"
+      cache-items
+      flat
+      hide-no-data
+      hide-details
+      label="What state are you from?"
+      solo-inverted
+    ></v-autocomplete>
+    </v-card-text>
+            </div>
+            <div>
+              
+            </div>
             <v-btn
               class="blue lighten-2 mt-5"
               dark
               large
-              href="/pre-made-themes"
+
             >
               Get Started
             </v-btn>
