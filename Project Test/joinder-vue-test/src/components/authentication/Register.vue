@@ -39,7 +39,8 @@
   </v-app>
     <navbar-guest></navbar-guest><br>
 
-    <div class="row justify-content-center">      
+    <div class="row justif
+    y-content-center">      
       <div class="col col-xs-10 col-sm-6">
         <div class="card">
           <div class="card-header">

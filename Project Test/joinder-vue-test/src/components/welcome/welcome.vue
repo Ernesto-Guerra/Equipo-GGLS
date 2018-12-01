@@ -1,6 +1,6 @@
 <template>
      <v-app light>
-  
+  <bar ></bar>
     <v-content>
       <section>
         <v-parallax src="http://www.escuelamanagement.eu/wp-content/uploads/Pensamiento-cr%C3%ADtico-y-creativo-1080x675.jpg" height="600">
@@ -11,8 +11,8 @@
             class="white--text"
           >
            
-            <h1 class="white--text mb-2 display-1 text-xs-center">Parallax Template</h1>
-            <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
+            <h1 class="white--text mb-2 display-1 text-xs-center">  Responderemos a todas tus preguntas</h1>
+            <div class="subheading mb-3 text-xs-center">respondemos en menos de 5 minutos </div>
             <div>
   <v-card-text>
      <v-autocomplete style="background-color:white;width:220%;margin-left:-55%"
@@ -34,7 +34,7 @@
               large
 
             >
-              Get Started
+              Buscar
             </v-btn>
           </v-layout>
         </v-parallax>
@@ -180,26 +180,19 @@
           </v-layout>
         </v-container>
       </section>
-
-      <v-footer class="blue darken-2">
-        <v-layout row wrap align-center>
-          <v-flex xs12>
-            <div class="white--text ml-3">
-              Made with
-              <v-icon class="red--text">favorite</v-icon>
-              by <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
-              and <a class="white--text" href="https://github.com/vwxyzjn">Costa Huang</a>
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-footer>
+      
     </v-content>
   </v-app>
 </template>
 
 <script>
+import NavbarGuest from '@/components/Navbar/NavbarGuest'
+import footer from '@/components/footer'
 export default {
-
+ components:{
+    bar:NavbarGuest,
+    foot:footer
+  }
 }
 </script>
 
