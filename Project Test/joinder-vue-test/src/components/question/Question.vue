@@ -2,7 +2,7 @@
     <div >     
       <v-layout >
     <v-flex >
-      <v-card  >
+      <v-card >
         <v-card-title primary-title>
           <div>
             <h5 class="headline mb-0">{{question.title}} ---------- {{question.subject}}</h5>

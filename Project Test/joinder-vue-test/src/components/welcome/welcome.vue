@@ -180,18 +180,18 @@
           </v-layout>
         </v-container>
       </section>
-      
     </v-content>
   </v-app>
 </template>
 
 <script>
-import NavbarGuest from '@/components/Navbar/NavbarGuest'
-import footer from '@/components/footer'
+import NavbarGuest from '../Navbar/NavbarGuest'
+import Question from '../question/AllQuestions'
+
 export default {
  components:{
     bar:NavbarGuest,
-    foot:footer
+    ques:Question,
   }
 }
 </script>

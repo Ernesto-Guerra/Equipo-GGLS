@@ -7,13 +7,11 @@
 
 <script>
 
-import footer from '@/components/footer'
-import NavbarGuest from '@/components/Navbar/NavbarGuest'
+import footer from './components/footer.vue'
 export default {
   
   name: 'App',
   components: {
-    rar:NavbarGuest,
     dev:footer
   },
   data () {
