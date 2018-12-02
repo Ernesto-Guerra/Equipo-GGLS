@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-user></navbar-user>
+   <navu></navu>
     <v-app light>
       <v-content>
         <section>
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import NavbarUser from "./NavbarUser.vue";
+import NavbarUser from "./Navbar/NavbarUser.vue";
 import AllQuestions from "./question/AllQuestions.vue";
 export default {
   data() {
@@ -75,7 +75,7 @@ export default {
   },
   created() {},
   components: {
-    NavbarUser,
+    'navu':NavbarUser,
     AllQuestions
   },
   methods: {
