@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import NavbarUser from "./NavbarUser.vue";
+import NavbarUser from "./Navbar/NavbarUser.vue";
 import AllQuestions from "./question/AllQuestions.vue";
 export default {
   data() {

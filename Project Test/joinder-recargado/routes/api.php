@@ -29,4 +29,7 @@ Route::resource('/subjects','SubjectController');
 
 Route::resource('/answer', 'AnswerController');
 
+Route::resource('/score','UserController');
+
+
 Route::get('/Qanswers/{question_id}','AnswerController@Qanswers');
