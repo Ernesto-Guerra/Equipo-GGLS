@@ -18,6 +18,30 @@
       </v-slide-x-reverse-transition>
     </v-autocomplete>
  <v-btn flat>BUSCAR</v-btn>
+     <v-menu
+      bottom
+      origin="center center"
+      transition="scale-transition"
+    >
+      <v-btn
+        slot="activator"
+        color="#343A40"
+        dark
+      >
+        Scale Transition
+      </v-btn>
+
+      <v-list>
+        <v-list-tile
+          v-for="(item, i) in items"
+          :key="i"
+         
+        >
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+
           <v-menu bottom left>
             <v-btn
               slot="activator"
@@ -42,7 +66,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data: () => ({
+      items: [
+        { title: 'perfil' },
+        { title: 'editar' },
+        { title: 'salir' },
+        { title: 'mis preguntas' }
+      ]
+    })
+  }
 </script>
 
 <style>
