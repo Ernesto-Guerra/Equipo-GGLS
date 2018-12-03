@@ -1,5 +1,6 @@
 <template>
 <div>
+  <nav2></nav2>
    <v-app id="inspire">
     <v-content>
       <v-container fluid fill-height>
@@ -63,7 +64,7 @@
 </template>
 
 <script>
-import NavbarGuest from '../NavbarGuest.vue'
+import NavbarGuest from '../Navbar/NavbarGuest.vue'
 
 export default {
   data() {
@@ -73,7 +74,7 @@ export default {
     };
   },
   components:{
-    NavbarGuest
+   'nav2': NavbarGuest
   },
   methods:{
     login(){
