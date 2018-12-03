@@ -80,7 +80,11 @@ export default {
     login(){
       var data ={
         client_id:2,
+<<<<<<< HEAD
         client_secret:'ZQarpBGI6eFmtsq7PNekFtM2pctS5qbY9QFYeKt2',
+=======
+        client_secret:'v5Dt6NVVC35i1NRRygzWoLfXY6TjTdIghioiloqf',
+>>>>>>> 7fcede7b49dc6c4d09d77f5b1dd764f1300e2abd
         grant_type:'password',
         username:this.email,
         password:this.password
@@ -92,7 +96,7 @@ export default {
         if(response.ok){
           this.$auth.setToken(response.body.access_token,response.body.expires_in + Date.now())
 
-          this.$http.get("api/user",data).then(response =>{            
+          this.$http.get("api/user",data).then(response =>{         
             this.$auth.setUserId(response.body.id)
              this.$router.push("/feed")
           })           
