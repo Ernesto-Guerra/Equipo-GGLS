@@ -12,14 +12,14 @@
       <div class="col col-sm-8">
         <v-layout>
           <v-flex>
-            <v-card>
+            <v-card v-if="question.status == 'Pendiente'">
               <v-card-title primary-title>
                 <div>
                   <h4 class="headline mb-0">Respuesta</h4>
                 </div>
               </v-card-title>
               <div>
-                <v-textarea outline name="input-7-4" label="Respuesta" v-model="answer"></v-textarea>
+                <v-textarea  outline name="input-7-4" label="Respuesta" v-model="answer"></v-textarea>
               </div>
               <v-card-actions>
                 <v-btn flat @click="sendAnswer()" color="orange">responder</v-btn>
@@ -36,7 +36,7 @@
         <div v-if="ready">
           <div class="row" v-for="answer in answers" :key="answer.id">
               <div class="col col-sm-12">
-                  <answer :answer="answer" :user="user"></answer>
+                  <answer :answer="answer" :user="user" :question="question" @Uquestion="Rquestion(...arguments)"></answer>
               </div>
           </div>
         </div>
@@ -105,7 +105,12 @@ export default {
         this.answers.push(response.body);
         this.answer = "";
       });
-    }
+    },
+    Rquestion(temp){
+      this.question = temp;
+      console.log('si me ejecuto');
+      console.log(temp);
+    },
   }
 };
 </script>

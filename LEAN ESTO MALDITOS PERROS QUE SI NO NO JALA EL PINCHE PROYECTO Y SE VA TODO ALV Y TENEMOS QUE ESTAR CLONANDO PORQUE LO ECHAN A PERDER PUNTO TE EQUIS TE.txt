@@ -1,4 +1,4 @@
-El proyecto esta dividido en dos carpetas....
+﻿El proyecto esta dividido en dos carpetas....
 Joinder-recargado es la parte de backend
 El otro pues front >:c
 
@@ -12,7 +12,7 @@ Y hay pasos para que jale esta cosa pues, no de a gratis va a servir.....
 
 4. utilizar el comando "php artisan passport:install"  //Esto genera llaves para no se que cosa pero es necesario IMPORTANTE!!! SOLO HACERLO UNA VEZ QUE SI NO SE MUERE TODO
 
-5. ir a la base de datos en la tabla "oauth_clientes" y copiar el secret de la segunda fila
+5. ir a la base de datos en la tabla "oauth_clients" y copiar el secret de la segunda fila
 
 6. abrir la carpeta del frontend y buscar el componente "Login"
 

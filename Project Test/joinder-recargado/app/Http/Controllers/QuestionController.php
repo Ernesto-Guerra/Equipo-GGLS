@@ -56,7 +56,10 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        $question->status = 'Contestado';
+        $question->save();
+        return $question;
     }
 
     /**
