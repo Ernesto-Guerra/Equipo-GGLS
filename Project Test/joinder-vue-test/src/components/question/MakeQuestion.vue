@@ -1,6 +1,7 @@
 <template>
   <div>
-    <navbar-user></navbar-user>
+      <v-app light> 
+  <nav2></nav2>
 
     <v-layout>
       <v-flex xs12 sm8 offset-sm3 style="margin-left:15%;margin-top:5%">
@@ -76,11 +77,12 @@
       </div>
     </div> -->
     <br>
+     </v-app >
   </div>
 </template>
 
 <script>
-import NavbarUser from "../NavbarUser.vue";
+import NavbarUser from "../Navbar/NavbarUser.vue";
 
 export default {
   data() {
@@ -112,7 +114,7 @@ export default {
     this.user_id = this.$auth.getUserId();
   },
   components: {
-    NavbarUser
+    'nav2':NavbarUser
   },
   methods: {
     createQ() {

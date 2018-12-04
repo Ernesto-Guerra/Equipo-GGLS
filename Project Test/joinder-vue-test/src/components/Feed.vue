@@ -4,7 +4,7 @@
     <v-app light>
       <v-content>
 
-        <button @click="logout()" class="btn btn-primary">CERRAR SESION</button>
+     
         <br>
             <v-layout >
     <v-flex xs12 sm6 offset-sm3>
