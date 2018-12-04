@@ -8,6 +8,7 @@ import QuestionDetails from './components/question/QuestionDetails'
 import Welcome from './components/welcome/welcome.vue'
 import Navbar from './components/Navbar/NavbarGuest.vue'
 import NavbarUser from './components/Navbar/NavbarUser.vue'
+import Profile from './components/Profile.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -57,7 +58,12 @@ const router = new VueRouter({
             meta:{
                 forAuth:true
             }
-        }
+        },
+        {
+            path:"/profile",
+            component:Profile,
+      
+        },
     ]
 });
 

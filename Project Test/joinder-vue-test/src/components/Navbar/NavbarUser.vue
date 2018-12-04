@@ -28,7 +28,7 @@
         color="#343A40"
         dark
       >
-        Scale Transition
+      MATERIAS
       </v-btn>
 
       <v-list>
@@ -55,6 +55,7 @@
               <v-list-tile
                 v-for="(item, i) in items"
                 :key="i"
+                @click=""
              
               >
                 <v-list-tile-title>{{ item.title }}</v-list-tile-title>
