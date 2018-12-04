@@ -4,12 +4,13 @@
     <nav2></nav2>
 <center><div class="container ">
         
-            <form method="" >
+            <form method=""  >
+                  {{findInfo(this.$auth.getUserId())}}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
                             <img id="" class="" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" style="position:absolute;
-        left:30%;
+        left:27%;
         width:150px;
         height:150px;
         border-radius:150px;
@@ -21,7 +22,7 @@
                             
                             <h2>¡Bienvenido {{ user.name}} !</h2>
                                     <h6>
-                                       Tipo de usuario: Estudiante
+                                       Tipo de usuario: {{info.type}}
                                     </h6>
                                     <p class="proile-rating">Puntos <span>{{ user.score}}</span></p>
                             <ul class="nav nav-tabs" id="" role="tablist">
@@ -32,16 +33,14 @@
                         
                     </div>
                     <div class="col-md-2">
-                        <input @click="guardar()"  type="submit" class="btn btn-primary" name="" value="Guardar cambios"/>
+                        <v-btn class="btn btn-primary"  @click="guardar()"> 
+                            Guardar cambios
+                        </v-btn>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card"> <br>
-                            <center><p>Descripción</p></center>
-                           
-                            <input type="text" value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe tempora enim molestias sit aliquam omnis sunt! Quidem reprehenderit quia, iusto eaque, vero facere quod ab adipisci quam molestiae, cumque dolor.">
-                        </div>
+                        
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -51,7 +50,8 @@
                                                 <label>Matrícula: </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <p>123</p>
+                                                <p>{{info.matricula}}</p>
+                                                <v-textarea  outline name="input-7-4" label="Respuesta" v-model="answer"></v-textarea>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -75,7 +75,7 @@
                                                 <label>Telefono</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>1234</p>
+                                                <p>{{info.telephone}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -83,7 +83,7 @@
                                                 <label>Carrera</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>I D S</p>
+                                                <p>{{info.career}}</p>
                                             </div>
                                         </div>
                                         
@@ -105,9 +105,10 @@ import NavbarUser from './Navbar/NavbarUser.vue';
 export default {
     
    data() {
-         return{
-            
-            user: {}
+         return{          
+            user: {},
+            infos:[],
+            info:{},
          };
      },
      created() {
@@ -125,6 +126,10 @@ export default {
               console.log(response.data);
               console.log("Si sirvo");
             this.user = response.data;
+            
+        this.$http.get("api/information", Header).then(response => {
+        this.infos = response.body;
+            });
           });
 
      },
@@ -132,7 +137,14 @@ export default {
     'nav2':NavbarUser
     },
      methods: {
-    guardar() {
+    findInfo(id) {
+      this.infos.forEach(element => {
+        if (element.user_id == id) {
+          this.info = element;          
+        }
+      });
+    },
+    sendAnswer() {
       let data = {
         answer: this.answer,
         question_id: this.question.id,
