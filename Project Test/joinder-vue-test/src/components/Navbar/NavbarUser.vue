@@ -28,7 +28,7 @@
         color="#343A40"
         dark
       >
-        Scale Transition
+      MATERIAS
       </v-btn>
 
       <v-list>
@@ -52,14 +52,13 @@
             </v-btn>
 
             <v-list>
-              <v-list-tile>
-                <v-list-tile-title>
-                  <router-link :to="{ path: '/myquestions' }">
-              <v-btn >
-                 Mis preguntas
-              </v-btn>
-              </router-link>
-                </v-list-tile-title>
+              <v-list-tile
+                v-for="(item, i) in items"
+                :key="i"
+                @click=""
+             
+              >
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>
@@ -75,8 +74,16 @@ export default {
         { title: 'editar' },
         { title: 'salir' },
         { title: 'mis preguntas' }
-      ]
-    })
+      ],materia:[]
+    }),methods:
+    {
+      mostrar(){
+        this.$http.get('http://127.0.0.1:8000/api/subjects').then((responde)=>{
+          this.materia=responde.body
+          console.log(this.materia)
+        })
+      }
+    }
   }
 </script>
 
