@@ -32,12 +32,10 @@
       </v-btn>
 
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-         
-        >
-          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        <v-list-tile 
+      >
+ 
+          <v-list-tile-title></v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -53,12 +51,10 @@
 
             <v-list>
               <v-list-tile
-                v-for="(item, i) in items"
-                :key="i"
-                @click=""
-             
-              >
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+             v-for="item in items" :key="item.title"  :to="item.path"  @click=""
+              >   
+              <v-list-tile-title v-if="item.title=='salir'" @click="logout()">{{ item.title }}</v-list-tile-title>
+                <v-list-tile-title v-else>{{ item.title }}</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>
@@ -70,19 +66,17 @@
 export default {
     data: () => ({
       items: [
-        { title: 'perfil' },
-        { title: 'editar' },
+         { title: 'preguntas'  ,path:"/preguntas"},
+        { title: 'perfil' ,path:"/perfil"},
+        { title: 'editar' ,path:"/editar"},
         { title: 'salir' },
-        { title: 'mis preguntas' }
-      ],materia:[]
-    }),methods:
-    {
-      mostrar(){
-        this.$http.get('http://127.0.0.1:8000/api/subjects').then((responde)=>{
-          this.materia=responde.body
-          console.log(this.materia)
-        })
-      }
+      
+      ],subjects:[]
+    }),methods:{
+  logout() {
+      this.$auth.destroyToken();
+      this.$router.push("/login");
+    }
     }
   }
 </script>

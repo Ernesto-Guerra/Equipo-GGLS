@@ -5,9 +5,13 @@
       <v-card >
         <v-card-title primary-title>
           <div>
-            <h5 class="headline mb-0">{{question.title}} ---------- {{question.subject}}</h5>
+            <h5 class="headline mb-0 ">{{question.title}}  </h5>
+             <h6 class=" " >{{question.subject}}</h6>        
             <div>{{question.description}}</div>
-                 <span class="grey--text">     {{user.name}} _____________________________________ Publicado:{{question.created_at}}  </span><br>
+            <br>
+                  <span class="grey--text">     {{user.name}} </span>
+                  <span class="grey--text col-md-5">Publicado:{{question.created_at}}  </span>               
+                 <br>
           </div>
         </v-card-title>
 

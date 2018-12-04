@@ -1,7 +1,10 @@
 <template>
   <div>
+        <v-app >
     <navbar-user></navbar-user>
     <br>
+
+   
     <div class="row justify-content-center">
       <div class="col col-sm-8">
         <question v-if="ready" :question="question" :user="user"></question>
@@ -42,12 +45,13 @@
         </div>
       </div>
     </div>
+       </v-app >
   </div>
 </template>
 
 <script>
 import Question from "./Question.vue";
-import NavbarUser from "../NavbarUser.vue";
+import NavbarUser from "../Navbar/NavbarUser.vue";
 import Answer from "../answer/Answer.vue";
 
 export default {
