@@ -5,7 +5,7 @@
     <v-layout>
       <v-flex xs12 sm8 offset-sm3 style="margin-left:15%;margin-top:5%">
         <v-card>
-          <form action v-on:submit.prevent="createQ()">
+          <form>
           <v-card-title primary-title>
             <div>
               <h4 class="headline mb-0">Pregunta sobre tu tarea</h4>
@@ -18,19 +18,21 @@
           </div>
 
           <div>
-            <v-textarea    v-model="description" outline name="input-7-4" label="Respuesta" ></v-textarea>
+            <v-textarea    v-model="description" outline name="input-7-4" label="Descripcion" ></v-textarea>
           </div>
 
           <v-card-actions>
             <v-flex xs12>
               <v-flex xs12 sm6 d-flex>
-        <v-select
-          :items="items"
-          label="Standard"
-          style="margin-left:3%"
-        ></v-select>
+
+
+       <v-select label="Standard" v-model="subject" :items="subjects">
+         <option> {{subjects}} </option>
+        <!-- <option selected>Open this select menu</option> -->
+        <!-- <option v-for="subject in subjects" :key="subject.id"> {{subject.name}} </option> -->
+        </v-select>
       </v-flex>
-                <v-btn type="submit" style="margin-left:2%" color="red">enviar pregunta</v-btn>
+                <v-btn @click="createQ()" style="margin-left:2%" color="red">enviar pregunta</v-btn>
             </v-flex>
           
           </v-card-actions>
@@ -87,7 +89,8 @@ export default {
       description: "",
       subject: "",
       user_id: "",
-      subjects: []
+      subjects: [],
+      items: ['Foo', 'Bar', 'Fizz', 'Buzz']
     };
   },
   created() {
@@ -99,7 +102,11 @@ export default {
     };
 
     this.$http.get("api/subjects").then(response => {
-      this.subjects = response.body;
+      response.data.forEach(element => {
+        this.subjects.push(element.name);
+      });
+            // this.subjects = this.subjects[0].name
+      console.log(this.subjects);
     });
 
     this.user_id = this.$auth.getUserId();
@@ -120,6 +127,11 @@ export default {
         console.log(response);
       });
     }
+  },
+  mounted:{
+    
+
+
   }
 };
 </script>
