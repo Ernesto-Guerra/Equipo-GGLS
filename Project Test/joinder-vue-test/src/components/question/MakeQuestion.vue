@@ -33,8 +33,9 @@
         <!-- <option v-for="subject in subjects" :key="subject.id"> {{subject.name}} </option> -->
         </v-select>
       </v-flex>
+      <router-link :to="{ path: '/feed' }">
                 <v-btn @click="createQ()" style="margin-left:2%" color="red">enviar pregunta</v-btn>
-            </v-flex>
+           </router-link> </v-flex>
           
           </v-card-actions>
            </form>
