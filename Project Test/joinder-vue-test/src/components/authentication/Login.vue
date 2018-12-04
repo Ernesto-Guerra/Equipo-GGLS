@@ -80,14 +80,14 @@ export default {
     login(){
       var data ={
         client_id:2,
-        client_secret:'8l4pFVugKTszvDCkh9pBc5OlpIpFpNtZshatqwKn',
+        client_secret:'o56kvobO1I4iktn5ZFiXiWbzijvjvKmJMOqzpoPM',
         grant_type:'password',
         username:this.email,
         password:this.password
       }
 
       this.$http.post("oauth/token",data).then( (response) =>{
-        //console.log(response);
+        console.log(response);
 
         if(response.ok){
           this.$auth.setToken(response.body.access_token,response.body.expires_in + Date.now())
