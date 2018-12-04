@@ -7,13 +7,6 @@
       <v-card v-for="data in questions" :key="data">
         <v-card-title primary-title>
           <div>
-<<<<<<< HEAD
-             
-            <h5 class="headline mb-0" >{{data.title}} ---------- {{data.subject}}</h5>
-           
-            <div>{{data.description}}</div>
-                 <span class="grey--text" >     {{user.name}} _____________________________________ Publicado:{{data.created_at}}  </span><br>
-=======
             <h5 class="headline mb-0 ">{{question.title}}  </h5>
              <h6 class=" " >{{question.subject}}</h6>        
             <div>{{question.description}}</div>
@@ -21,7 +14,6 @@
                   <span class="grey--text">     {{user.name}} </span>
                   <span class="grey--text col-md-5">Publicado:{{question.created_at}}  </span>               
                  <br>
->>>>>>> 5738a00ff740130912bf0802e11220ba14d89a72
           </div>
           
         </v-card-title>

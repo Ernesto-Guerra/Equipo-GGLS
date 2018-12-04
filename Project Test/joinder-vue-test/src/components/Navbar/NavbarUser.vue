@@ -33,9 +33,9 @@
 
       <v-list>
         <v-list-tile 
-       v-model="subject" :items="subjects" >
+      >
  
-          <v-list-tile-title>{{ subjects}}</v-list-tile-title>
+          <v-list-tile-title>{{ }}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -72,14 +72,7 @@ export default {
         { title: 'salir' },
       
       ],subjects:[]
-    }),materia(){
-         this.$http.get("api/subjects").then(response => {
-     for(var i in response.data){
-     console.log( response.data[i]);
-}
-            // this.subjects = this.subjects[0].name
-    });
-    },methods:{
+    }),methods:{
   logout() {
       this.$auth.destroyToken();
       this.$router.push("/login");
