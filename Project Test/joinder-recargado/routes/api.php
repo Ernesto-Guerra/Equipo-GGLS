@@ -28,10 +28,12 @@ Route::get('/users/{id}', 'AllsController@findUsers');
 Route::resource('/subjects','SubjectController');
 
 Route::resource('/answer', 'AnswerController');
+Route::resource('/question', 'QuestionController');
 
 Route::resource('/score','UserController');
 
 Route::resource('/register','RegisterController');
 
+Route::resource('/information','InformationController');
 
 Route::get('/Qanswers/{question_id}','AnswerController@Qanswers');
