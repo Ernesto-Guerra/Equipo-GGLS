@@ -12,8 +12,15 @@
     <v-btn icon>
       <v-icon>search</v-icon>
     </v-btn>
-    <v-autocomplete>
-      <v-slide-x-reverse-transition>
+    <v-autocomplete
+    v-model="model"
+    no-data-text="no se encontraron coincidencias"
+    :items="questions"
+    >
+      <v-slide-x-reverse-transition
+      slot="append-outer"
+      mode="out-in"
+      >
         <v-icon></v-icon>
       </v-slide-x-reverse-transition>
     </v-autocomplete>
@@ -32,10 +39,11 @@
       </v-btn>
 
       <v-list>
-        <v-list-tile 
+     
+        <v-list-tile  :items="subjects"
       >
  
-          <v-list-tile-title></v-list-tile-title>
+          <v-list-tile-title>{{subjects}}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -71,8 +79,34 @@ export default {
         { title: 'editar' ,path:"/editar"},
         { title: 'salir' },
       
-      ],subjects:[]
-    }),methods:{
+      ],subjects:[],
+      questions:[],
+      model:null
+    }),
+    created(){
+          var Header = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.$auth.getToken()
+      }
+    };
+        this.$http.get("api/subjects").then(response => {
+      response.data.forEach(element => {
+        this.subjects.push(element.name);
+      });
+      
+    });
+
+      this.$http.get("api/question", Header).then((response) => {
+          response.body.forEach(element => {
+            console.log(element.title);
+            this.questions.push(element.title);            
+          });
+      });
+
+    },
+    
+    methods:{
   logout() {
       this.$auth.destroyToken();
       this.$router.push("/login");
