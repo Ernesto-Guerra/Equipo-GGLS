@@ -24,7 +24,8 @@
         <v-icon></v-icon>
       </v-slide-x-reverse-transition>
     </v-autocomplete>
- <v-btn flat>BUSCAR</v-btn>
+ <v-btn flat  @click="search()">BUSCAR</v-btn>
+
      <v-menu
       bottom
       origin="center center"
@@ -107,6 +108,12 @@ export default {
     },
     
     methods:{
+      search(){
+        console.log(this.model)
+
+      },
+
+
   logout() {
       this.$auth.destroyToken();
       this.$router.push("/login");
