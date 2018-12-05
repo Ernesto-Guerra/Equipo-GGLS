@@ -49,9 +49,9 @@
 
       <v-list v-model="subject">
      
-        <v-list-tile  v-for="item in subjects" :key="item.id"    
+        <v-list-tile  v-for="item in subjects" :key="item.id" :to="{path:'/findsubject/'+item}"
       >
- 
+          
           <v-list-tile-title >{{item}}</v-list-tile-title>
         </v-list-tile>
         
@@ -94,7 +94,7 @@ export default {
       questions:[],
       subjects:[],
       subject:"",
-      model:null
+      model:'D:'
     }),
      created:function(){
 this.getmateria();
@@ -126,8 +126,7 @@ this.getmateria();
     
     methods:{
       search(){
-        console.log(this.model)
-
+        this.$router.push("/findquestion/" + this.model)
       },
 
 

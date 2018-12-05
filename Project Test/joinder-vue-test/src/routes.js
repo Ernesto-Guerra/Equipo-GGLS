@@ -12,6 +12,7 @@ import NavbarUser from './components/Navbar/NavbarUser.vue'
 import Profile from './components/Profile.vue'
 import Edprofile from './components/Edprofile.vue'
 import FindQuestion from './components/question/FindQuestion.vue'
+import FindMateria from './components/FindMateria.vue'
 
 Vue.use(VueRouter)
 
@@ -84,8 +85,15 @@ const router = new VueRouter({
       
         },
         {
-            path:"/question:title",
+            path:"/findquestion/:title",
             component:FindQuestion,
+            meta:{
+                forAuth:true
+            }
+        },
+        {
+            path:"/findsubject/:subject",
+            component:FindMateria,
             meta:{
                 forAuth:true
             }
