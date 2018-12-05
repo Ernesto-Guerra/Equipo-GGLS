@@ -49,8 +49,8 @@
                                                 <label>Matrícula: </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input v-if="edit" v-model="matricula">
-                                                <p v-else>{{info.matricula}}</p>
+                                                <input v-if="edit" v-model="info.matricula" value="" type="text">
+                                                <label v-else>{{info.matricula}}</label>
                                                 
                                             </div>
                                         </div>
@@ -59,9 +59,9 @@
                                                 <label>Nombre completo</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <input v-if="edit" v-model="name">
+                                                <input v-if="edit" v-model="user.name" value="" type="text">
                                                 
-                                                <p v-else>{{ user.name}}</p>
+                                                <label v-else>{{ user.name}}</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -69,9 +69,9 @@
                                                 <label>Cumpleaños</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <input v-if="edit" v-model="birthday">
-                                                
-                                                <p v-else>{{ info.birthday}}</p>
+                                                <input v-if="edit" v-model="info.birthday" value="" type="text">
+                                                <label v-else>{{ info.birthday}}</label>
+                                               
                                             </div>
                                         </div>
                                         <div class="row">
@@ -79,8 +79,8 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <input v-if="edit" v-model="email">
-                                                <p v-else>{{ user.email}}</p>
+                                                <input v-if="edit" v-model="user.email" value="" type="text">
+                                                <label v-else>{{ user.email}}</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -88,8 +88,8 @@
                                                 <label>Telefono</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <input v-if="edit" v-model="telephone">
-                                                <p v-else>{{info.telephone}}</p>
+                                                <input v-if="edit" v-model="info.telephone" value="" type="text">
+                                                <label v-else>{{info.telephone}}</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -97,8 +97,8 @@
                                                 <label>Carrera</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <input v-if="edit" v-model="career">
-                                                <p v-else>{{info.career}}</p>
+                                                <input v-if="edit" v-model="info.career" value="" type="text">
+                                                <label v-else>{{info.career}}</label>
                                             </div>
                                         </div>
                                         
@@ -147,6 +147,7 @@ export default {
             
           });
      },
+     
     components: {
     'nav2':NavbarUser
     },
@@ -157,16 +158,15 @@ export default {
         guardar() {
       let data = {
         user_id: this.$auth.getUserId(),
-        career: this.career,
-        birthday: this.birthday,
-        telephone: this.telephone,
-        matricula: this.matricula,
-        name: this.name,
-        email: this.email,       
+        career: this.info.career,
+        birthday: this.info.birthday,
+        telephone: this.info.telephone,
+        matricula: this.info.matricula,
+              
       };
       let datos ={
-          name: this.name,
-          email: this.email
+        name: this.user.name,
+        email: this.user.email, 
       };
 
       this.$http.put("api/information/"+this.$auth.getUserId(), data).then(response => {
