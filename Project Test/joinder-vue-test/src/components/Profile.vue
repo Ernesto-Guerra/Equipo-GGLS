@@ -1,7 +1,6 @@
 <template>
 
 <div>
-    <nav2></nav2>
 <center><div class="container ">
         
             <form method=""  >
@@ -115,7 +114,6 @@
 </template>
 
 <script>
-import NavbarUser from './Navbar/NavbarUser.vue';
 export default {
     
    data() {
@@ -149,7 +147,6 @@ export default {
      },
      
     components: {
-    'nav2':NavbarUser
     },
      methods: {
          editar(){

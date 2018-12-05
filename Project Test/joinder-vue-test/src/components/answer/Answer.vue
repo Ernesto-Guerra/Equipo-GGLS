@@ -18,22 +18,12 @@
 
           <v-card-actions>
             <v-btn v-if="question.user_id == this.$auth.getUserId() && question.status == 'Pendiente'" @click="score()" flat color="orange">score</v-btn>
+            <v-btn @click="report(answer.id,actual_id)" flat color="red">Reportar</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
     <br>
-    <!-- <div class="card">
-      <div class="card-header">{{user.name}}</div>
-      <div class="card-body">
-        {{answer.answer}}
-        <footer class="blockquote-footer">
-           Publicado:{{answer.created_at}}          
-            <button class="btn btn-danger">Reportar</button>        
-        </footer>
-      </div>
-    </div>
-    <br>-->
   </div>
 </template>
 
@@ -44,6 +34,11 @@ export default {
     user: {},
     question: {}
   },
+  data(){
+    return{
+      actual_id:''
+    }
+  },
   created(){
         var Header = {
       headers: {
@@ -51,6 +46,7 @@ export default {
         Authorization: "Bearer " + this.$auth.getToken()
       }
     };
+    this.actual_id=this.$auth.getUserId()
   },
   methods:{
     score(){
@@ -66,6 +62,18 @@ export default {
       });
 
 
+    },
+    report(ans_id,us_id){
+
+      let data={
+        answer_id:ans_id,
+        user_id:us_id
+      }
+
+      console.log(data)
+      this.$http.post("api/report",data, this.Header).then((response)=>{
+        console.log(response)
+      })
     }
   }
 };
