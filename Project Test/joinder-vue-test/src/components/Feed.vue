@@ -50,6 +50,7 @@ export default {
     'navu':NavbarUser,
     AllQuestions
   },
+
   methods: {
     logout() {
       this.$auth.destroyToken();

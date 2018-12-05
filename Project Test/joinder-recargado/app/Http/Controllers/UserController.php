@@ -99,4 +99,8 @@ class UserController extends Controller
     {
         //
     }
+    public function ranking(){
+        $usuario=User::orderBy('score', 'DESC')->take(3)->get();
+        return $usuario;
+    }
 }

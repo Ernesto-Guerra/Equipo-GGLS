@@ -40,10 +40,10 @@
 
       <v-list>
      
-        <v-list-tile  :items="subjects"
+        <v-list-tile  v-for="item in subjects" :key="item.id" :to="{path: '/' + item}" 
       >
  
-          <v-list-tile-title>{{subjects}}</v-list-tile-title>
+          <v-list-tile-title>{{item}}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -99,10 +99,13 @@ export default {
 
       this.$http.get("api/question", Header).then((response) => {
           response.body.forEach(element => {
-            console.log(element.title);
             this.questions.push(element.title);            
           });
       });
+
+    },
+    materia(){
+    
 
     },
     
