@@ -33,7 +33,8 @@
                         
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="btn btn-primary" name="" value="Editar perfil"/>
+                        <input type="text" class="btn btn-primary" v-if="edit"  value="Guardar cambios" @click="guardar()" />
+                        <input type="text" class="btn btn-primary" v-else value="Editar perfil"  @click="editar()" />
                     </div>
                 </div>
                 <div class="row">
@@ -48,7 +49,9 @@
                                                 <label>Matrícula: </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <p>{{info.matricula}}</p>
+                                                <input v-if="edit" v-model="matricula">
+                                                <p v-else>{{info.matricula}}</p>
+                                                
                                             </div>
                                         </div>
                                         <div class="row">
@@ -56,7 +59,19 @@
                                                 <label>Nombre completo</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{ user.name}}</p>
+                                                <input v-if="edit" v-model="name">
+                                                
+                                                <p v-else>{{ user.name}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Cumpleaños</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input v-if="edit" v-model="birthday">
+                                                
+                                                <p v-else>{{ info.birthday}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -64,7 +79,8 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{ user.email}}</p>
+                                                <input v-if="edit" v-model="email">
+                                                <p v-else>{{ user.email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -72,7 +88,8 @@
                                                 <label>Telefono</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{info.telephone}}</p>
+                                                <input v-if="edit" v-model="telephone">
+                                                <p v-else>{{info.telephone}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -80,7 +97,8 @@
                                                 <label>Carrera</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{info.career}}</p>
+                                                <input v-if="edit" v-model="career">
+                                                <p v-else>{{info.career}}</p>
                                             </div>
                                         </div>
                                         
@@ -98,7 +116,6 @@
 
 <script>
 import NavbarUser from './Navbar/NavbarUser.vue';
-
 export default {
     
    data() {
@@ -106,6 +123,7 @@ export default {
             user: {},
             infos:[],
             info:{},
+            edit:false,
          };
      },
      created() {
@@ -115,7 +133,6 @@ export default {
         Authorization: "Bearer " + this.$auth.getToken()
       }
     };
-      
       this.$http
           .get("api/users/" + this.$auth.getUserId(), Header)
           .then(response => {
@@ -127,13 +144,43 @@ export default {
         this.$http.get("api/information", Header).then(response => {
         this.infos = response.body;
             });
+            
           });
-
      },
     components: {
     'nav2':NavbarUser
     },
      methods: {
+         editar(){
+            this.edit=true
+         },
+        guardar() {
+      let data = {
+        user_id: this.$auth.getUserId(),
+        career: this.career,
+        birthday: this.birthday,
+        telephone: this.telephone,
+        matricula: this.matricula,
+        name: this.name,
+        email: this.email,       
+      };
+      let datos ={
+          name: this.name,
+          email: this.email
+      };
+
+      this.$http.put("api/information/"+this.$auth.getUserId(), data).then(response => {
+        console.log("Si jalaaaaaaaaaaa");
+
+        this.$http.put("api/users/"+this.$auth.getUserId(), datos).then(response => {
+        console.log("Si jaloooooooooooo");
+        this.edit=false;
+      });
+        
+      });
+      
+      
+    },
     findInfo(id) {
       this.infos.forEach(element => {
         if (element.user_id == id) {

@@ -84,7 +84,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->score = $user->score + 10;
+        $user->name = $request->name;
+        $user->email = $request->email;
 
         $user->save();
     }

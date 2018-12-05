@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:api'],function(){
 Route::get('/users', 'AllsController@users');
 
 Route::get('/users/{id}', 'AllsController@findUsers');
+Route::put('/users/{id}', 'UserController@update');
 
 Route::resource('/subjects','SubjectController');
 

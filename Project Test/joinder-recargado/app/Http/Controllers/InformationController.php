@@ -67,14 +67,18 @@ class InformationController extends Controller
          */
         public function edit($id)
         {
-    
+            
         }
     
         
         public function update(Request $request, $id)
         {
             $info = Personalinformation::find($id);
-            $info->carrer = 'si edita"';
+            $info->career = $request->career;
+            $info->birthday = $request->birthday;
+            $info->telephone = $request->telephone;
+            $info->matricula = $request->matricula;
+
             
             $info->save();
         }
