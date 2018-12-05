@@ -39,3 +39,5 @@ Route::resource('/information','InformationController');
 Route::get('/Qanswers/{question_id}','AnswerController@Qanswers');
 
 Route::get('/ranking','UserController@ranking');
+
+Route::get('/materia/{materia}','QuestionController@materia');

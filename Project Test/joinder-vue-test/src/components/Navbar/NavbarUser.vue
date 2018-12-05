@@ -38,13 +38,22 @@
       MATERIAS
       </v-btn>
 
-      <v-list>
+      <v-btn
+        slot="activator"
+        color="#343A40"
+        dark
+      >
+      {{subject}}
+      </v-btn>
+
+      <v-list v-model="subject">
      
-        <v-list-tile  v-for="item in subjects" :key="item.id" :to="{path: '/' + item}" 
+        <v-list-tile  v-for="item in subjects" :key="item.id"    
       >
  
-          <v-list-tile-title>{{item}}</v-list-tile-title>
+          <v-list-tile-title >{{item}}</v-list-tile-title>
         </v-list-tile>
+        
       </v-list>
     </v-menu>
 
@@ -66,7 +75,8 @@
               </v-list-tile>
             </v-list>
           </v-menu>
-
+   
+  
   </v-toolbar>
 </template>
 
@@ -79,10 +89,15 @@ export default {
         { title: 'editar' ,path:"/editar"},
         { title: 'salir' },
       
-      ],subjects:[],
+      ],
       questions:[],
+      subjects:[],
+      subject:"",
       model:null
     }),
+     created:function(){
+this.getmateria();
+  },
     created(){
           var Header = {
       headers: {
@@ -93,27 +108,33 @@ export default {
         this.$http.get("api/subjects").then(response => {
       response.data.forEach(element => {
         this.subjects.push(element.name);
+            
       });
-      
+          console.log() 
     });
 
       this.$http.get("api/question", Header).then((response) => {
           response.body.forEach(element => {
-            this.questions.push(element.title);            
+            this.questions.push(element.title);  
+              
           });
       });
 
     },
-    materia(){
     
-
-    },
     
     methods:{
   logout() {
       this.$auth.destroyToken();
       this.$router.push("/login");
-    }
+    },
+      getmateria:function(){
+        this.$http.get('api/materia/').then(function(responde){
+       console.log(this.subject)
+        })
+        
+
+  },
     }
   }
 </script>
