@@ -13,20 +13,34 @@
                 </v-toolbar>
                 <v-card-text>
                   <v-form>
-                    <v-text-field
+                    <div>
+<v-text-field
                       prepend-icon="person"
                       v-model="name"                      
                       label="Nombre"
                       type="text"
+                      name="nombre"
+                      v-validate="'required'"
+                        :class="{'has-errors': errors.has('nombre')}"
                     ></v-text-field>
-                    <v-text-field
+                                <FormError :attribute_name="'nombre'" :errors_form="errors"> </FormError>
+
+                  </div>
+                    <div>
+                         <v-text-field
                       prepend-icon="email"
                       v-model="email"
                       name="email"
                       label="Email "
-                      type="text"
+                      type="email"
+                       v-validate="'required|email'"
+                :class="{'has-errors': errors.has('email')}"
                     ></v-text-field>
+                  <FormError :attribute_name="'email'" :errors_form="errors"> </FormError>
 
+                    </div>
+                 <div>
+                   
                     <v-text-field
                       id="password"
                       v-model="password"
@@ -34,7 +48,13 @@
                       name="password"
                       label="Password"
                       type="password"
+                            v-validate="'required|min:6'"
+                :class="{'has-errors': errors.has('password')}"
                     ></v-text-field>
+                                <FormError :attribute_name="'password'" :errors_form="errors"> </FormError>
+
+                 </div>
+
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
@@ -83,7 +103,7 @@
 
 <script>
 import NavbarGuest from "../Navbar/NavbarGuest.vue";
-
+    import FormError from '../FormError';
 export default {
   data() {
     return {
@@ -93,7 +113,8 @@ export default {
     };
   },
   components: {
-    nav2: NavbarGuest
+    nav2: NavbarGuest,
+    FormError
   },
   methods:{
     register(){
@@ -107,7 +128,16 @@ export default {
       this.$http.post('api/register',data).then((response)=>{
         console.log(response)
       })
-    }
+    },
+    validateBeforeSubmit: function() {
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        alert('From Submitted!');
+                        return;
+                    }
+                    //errores
+                });
+            }
   }
 };
 </script>
