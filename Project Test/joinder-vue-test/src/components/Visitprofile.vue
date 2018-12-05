@@ -5,7 +5,7 @@
 <center><div class="container ">
         
             <form method=""  >
-                  {{findInfo(this.$auth.getUserId())}}
+                  {{findInfo(this.$route.params.id)}}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -32,11 +32,10 @@
                         </div>
                         
                     </div>
-                    <div class="col-md-2">
-                        <v-btn class="btn btn-primary"  @click="guardar()"> 
-                            Guardar cambios
-                        </v-btn>
-                    </div>
+                    <!-- <div class="col-md-2">
+                        <input type="text" class="btn btn-primary" v-if="edit"  value="Guardar cambios" @click="guardar()" />
+                        <input type="text" class="btn btn-primary" v-else value="Editar perfil"  @click="editar()" />
+                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -50,8 +49,9 @@
                                                 <label>Matrícula: </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <p>{{info.matricula}}</p>
-                                                <v-textarea  outline name="input-7-4" label="Respuesta" v-model="answer"></v-textarea>
+                                                
+                                                <label>{{info.matricula}}</label>
+                                                
                                             </div>
                                         </div>
                                         <div class="row">
@@ -59,7 +59,19 @@
                                                 <label>Nombre completo</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{ user.name}}</p>
+                                                
+                                                
+                                                <label >{{ user.name}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Cumpleaños</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                
+                                                <label >{{ info.birthday}}</label>
+                                               
                                             </div>
                                         </div>
                                         <div class="row">
@@ -67,7 +79,8 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{ user.email}}</p>
+                                                
+                                                <label >{{ user.email}}</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -75,7 +88,8 @@
                                                 <label>Telefono</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{info.telephone}}</p>
+                                                
+                                                <label >{{info.telephone}}</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -83,7 +97,8 @@
                                                 <label>Carrera</label>
                                             </div>
                                             <div class="col-md-5">
-                                                <p>{{info.career}}</p>
+                                                
+                                                <label >{{info.career}}</label>
                                             </div>
                                         </div>
                                         
@@ -101,26 +116,26 @@
 
 <script>
 import NavbarUser from './Navbar/NavbarUser.vue';
-
 export default {
     
    data() {
-         return{          
+         return{
+             visit_id:'',          
             user: {},
             infos:[],
-            info:{},
+            info:{}
          };
      },
      created() {
+         this.visit_id = this.$route.id;
            var Header = {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + this.$auth.getToken()
       }
     };
-      
       this.$http
-          .get("api/users/" + this.$auth.getUserId(), Header)
+          .get("api/users/" +this.$route.params.id, Header)
           .then(response => {
               console.log(response);
               console.log(response.data);
@@ -130,9 +145,10 @@ export default {
         this.$http.get("api/information", Header).then(response => {
         this.infos = response.body;
             });
+            
           });
-
      },
+     
     components: {
     'nav2':NavbarUser
     },
@@ -143,19 +159,7 @@ export default {
           this.info = element;          
         }
       });
-    },
-    sendAnswer() {
-      let data = {
-        answer: this.answer,
-        question_id: this.question.id,
-        user_id: this.user_id
-      };
-
-      this.$http.post("api/answer", data).then(response => {
-        this.answers.push(response.body);
-        this.answer = "";
-      });
-    },
+    }
   }
 }
 </script>

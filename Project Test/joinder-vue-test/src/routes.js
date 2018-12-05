@@ -10,7 +10,7 @@ import Question from './components/question/Question.vue'
 import Welcome from './components/welcome/welcome.vue'
 import NavbarUser from './components/Navbar/NavbarUser.vue'
 import Profile from './components/Profile.vue'
-import Edprofile from './components/Edprofile.vue'
+import Visitprofile from './components/Visitprofile.vue'
 
 Vue.use(VueRouter)
 
@@ -56,7 +56,7 @@ const router = new VueRouter({
             }
         },
         {
-            path:"/details:id",
+            path:"/details/:id",
             component:QuestionDetails,
             meta:{
                 forAuth:true
@@ -68,9 +68,11 @@ const router = new VueRouter({
       
         },
         {
-            path:"/editprofile",
-            component:Edprofile,
-      
+            path:"/visit/:id",
+            component:Visitprofile,
+            meta:{
+                forAuth:true
+            }
         },
         {
             path:"/myquestions",
