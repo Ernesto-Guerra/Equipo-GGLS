@@ -19,8 +19,18 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field prepend-icon="person" v-model="email" name="login" label="Login" type="text"></v-text-field>
-                  <v-text-field id="password" v-model="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                  <div>
+                <v-text-field  v-validate="'required|email'"
+                :class="{'has-errors': errors.has('email')}" prepend-icon="person" v-model="email" name="email" label="Email" type="email"></v-text-field>
+            <FormError :attribute_name="'email'" :errors_form="errors"> </FormError>
+
+                  </div>
+                  <div>
+                                      <v-text-field  v-validate="'required|confirmed:password'"
+                :class="{'has-errors': errors.has('password_confirmation')}" id="password" v-model="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+            <FormError :attribute_name="'password_confirmation'" :errors_form="errors"> </FormError>
+
+                  </div>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -65,8 +75,10 @@
 
 <script>
 import NavbarGuest from '../Navbar/NavbarGuest.vue'
+  import FormError from '../FormError';
 
 export default {
+     name: "form-component",
   data() {
     return {
       email: "",
@@ -74,7 +86,8 @@ export default {
     };
   },
   components:{
-   'nav2': NavbarGuest
+   'nav2': NavbarGuest,
+        FormError
   },
   methods:{
     login(){
@@ -103,7 +116,16 @@ export default {
         }
         
       })
-    }
+    },
+          validateBeforeSubmit: function() {
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        alert('From Submitted!');
+                        return;
+                    }
+                    //errores
+                });
+            }
   }
 };
 </script>
