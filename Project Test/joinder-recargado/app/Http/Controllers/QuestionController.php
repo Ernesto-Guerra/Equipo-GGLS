@@ -72,4 +72,8 @@ class QuestionController extends Controller
     {
         //
     }
+    public function materia($materia){
+        return Question::where('subject',$materia)->orderBy('created_at','desc')->get();
+    }
+
 }

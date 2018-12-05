@@ -7,7 +7,8 @@ import VueResource from 'vue-resource'
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 import Auth from './packages/auth/Auth.js'
-
+import VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
 Vue.config.productionTip = false
 
 Vue.use(VueResource)

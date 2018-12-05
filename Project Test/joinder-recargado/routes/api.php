@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:api'],function(){
 Route::get('/users', 'AllsController@users');
 
 Route::get('/users/{id}', 'AllsController@findUsers');
+Route::put('/users/{id}', 'UserController@update');
 
 Route::resource('/subjects','SubjectController');
 
@@ -37,3 +38,7 @@ Route::resource('/register','RegisterController');
 Route::resource('/information','InformationController');
 
 Route::get('/Qanswers/{question_id}','AnswerController@Qanswers');
+
+Route::get('/ranking','UserController@ranking');
+
+Route::get('/materia/{materia}','QuestionController@materia');
