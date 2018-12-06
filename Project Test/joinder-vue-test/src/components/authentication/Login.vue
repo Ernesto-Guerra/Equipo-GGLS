@@ -63,7 +63,7 @@ export default {
     login(){
       var data ={
         client_id:2,
-        client_secret:'o56kvobO1I4iktn5ZFiXiWbzijvjvKmJMOqzpoPM',
+        client_secret:'WSNoLHu6rcwtDD8aZffyNApXymwNAaU5VEUB20Mn',
         grant_type:'password',
         username:this.email,
         password:this.password
