@@ -17,7 +17,7 @@
 
         <v-card-actions>
       
-           <router-link :to="{ path: '/details'+question.id}">
+           <router-link :to="{ path: 'details'+question.id}">
           <v-btn  v-if="!watching" flat color="orange">Explore</v-btn>                   
           </router-link>  
          

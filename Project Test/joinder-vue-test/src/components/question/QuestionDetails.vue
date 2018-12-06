@@ -1,7 +1,10 @@
 <template>
   <div>
         <v-app >
-    <br> 
+    <navbar-user></navbar-user>
+    <br>
+
+   
     <div class="row justify-content-center">
       <div class="col col-sm-8">
         <question v-if="ready" :question="question" :user="user"></question>
@@ -27,6 +30,11 @@
             </v-card>
           </v-flex>
         </v-layout>
+        <!-- <div class="row justify-content-end">
+          <div class="col col-sm-2">
+            <button @click="sendAnswer()" class="btn btn-info">Responder</button>
+          </div>
+        </div>-->
 <br>
         <div v-if="ready">
           <div class="row" v-for="answer in answers" :key="answer.id">
@@ -43,6 +51,7 @@
 
 <script>
 import Question from "./Question.vue";
+import NavbarUser from "../Navbar/NavbarUser.vue";
 import Answer from "../answer/Answer.vue";
 
 export default {
@@ -59,6 +68,7 @@ export default {
   },
   components: {
     Question,
+    NavbarUser,
     Answer
   },
   created() {

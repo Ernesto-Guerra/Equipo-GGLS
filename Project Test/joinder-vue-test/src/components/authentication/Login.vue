@@ -1,5 +1,6 @@
 <template>
 <div>
+  <nav2></nav2>
    <v-app id="inspire">
     <v-content>
       <v-container fluid fill-height>
@@ -9,6 +10,12 @@
               <v-toolbar dark color="dark">
                 <v-toolbar-title style="margin-left:40%;" justify-center>Login </v-toolbar-title>
                 <v-spacer></v-spacer>
+                <v-tooltip right>
+                  <v-btn slot="activator" icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank">
+                    <v-icon large>mdi-codepen</v-icon>
+                  </v-btn>
+                  <span>Codepen</span>
+                </v-tooltip>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -39,12 +46,35 @@
       </v-container>
     </v-content>
   </v-app>
+<!-- <div>
+    <navbar-guest></navbar-guest><br>
+    <div class="row justify-content-center">      
+      <div class="col col-xs-10 col-sm-6">      
+        <div class="card">
+          <div class="card-header">
+            Login
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <input v-model="email" class="form-control" type="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input v-model="password" class="form-control" type="password" placeholder="Password">
+            </div>
+            <button @click="login()" class="btn btn-success pull-right">Login</button>                        
+
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>-->
 
 </div> 
   
 </template>
 
 <script>
+import NavbarGuest from '../Navbar/NavbarGuest.vue'
   import FormError from '../FormError';
 
 export default {
@@ -56,13 +86,14 @@ export default {
     };
   },
   components:{
+   'nav2': NavbarGuest,
         FormError
   },
   methods:{
     login(){
       var data ={
         client_id:2,
-        client_secret:'WSNoLHu6rcwtDD8aZffyNApXymwNAaU5VEUB20Mn',
+        client_secret:'9w4Lg5Ars16BKEg2KegX5uaulo9AOx0R8Ea7RufB',
         grant_type:'password',
         username:this.email,
         password:this.password
@@ -75,7 +106,8 @@ export default {
           this.$auth.setToken(response.body.access_token,response.body.expires_in + Date.now())
 
           this.$http.get("api/user",data).then(response =>{         
-            this.$auth.setUserId(response.body.id)            
+            this.$auth.setUserId(response.body.id)
+            console.log("hola")
              this.$router.push("/feed")
           })           
         }

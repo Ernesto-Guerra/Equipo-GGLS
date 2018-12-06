@@ -69,7 +69,7 @@
 
             <v-list>
               <v-list-tile
-             v-for="item in items" :key="item.title"  :to="item.path"  
+             v-for="item in items" :key="item.title"  :to="item.path"  @click=""
               >   
               <v-list-tile-title v-if="item.title=='salir'" @click="logout()">{{ item.title }}</v-list-tile-title>
                 <v-list-tile-title v-else>{{ item.title }}</v-list-tile-title>

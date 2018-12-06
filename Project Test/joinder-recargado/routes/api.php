@@ -19,7 +19,6 @@ Route::get('/test', function () {
 
 Route::group(['middleware' => 'auth:api'],function(){
     Route::resource('/question', 'QuestionController');
-    Route::resource('/report','ReportController');
 });
 
 Route::get('/users', 'AllsController@users');

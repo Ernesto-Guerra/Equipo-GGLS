@@ -1,6 +1,7 @@
 <template>
   <div>
       <v-app light> 
+  <nav2></nav2>
 
     <v-layout>
       <v-flex xs12 sm8 offset-sm3 style="margin-left:15%;margin-top:5%">
@@ -43,6 +44,39 @@
       </v-flex>
     </v-layout>
     <br>
+    <!-- <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <form action v-on:submit.prevent="createQ()">
+              <div class="form-group shadow-textarea">
+                <h4>Pregunta sobre tu tarea</h4>
+                <div class="form-group row">
+                  <label for>Titulo:</label>
+                  <input type="text" v-model="title">
+                  <textarea
+                    class="form-control border border-secondar rounded"
+                    rows="7"
+                    placeholder="Escribe tu pregunta "
+                    style="border-radius: 5px 5px 5px 5px;"
+                    v-model="description"
+                  ></textarea>
+                </div>
+              </div>
+              <select
+                class="browser-default custom-select"
+                style="width: 38%;border-radius: 5px 5px 5px 5px"
+                v-model="subject"
+              >
+                <option selected>Open this select menu</option>
+                <option v-for="subject in subjects" :key="subject.id">{{subject.name}}</option>
+              </select>
+              <button type="submit" class="btn btn-primary">Enviar pregunta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <br>
      </v-app >
   </div>
@@ -81,6 +115,7 @@ export default {
     this.user_id = this.$auth.getUserId();
   },
   components: {
+    'nav2':NavbarUser
   },
   methods: {
     createQ() {
