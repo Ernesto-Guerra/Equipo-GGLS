@@ -1,7 +1,7 @@
 <template>
 
   <v-toolbar dark color="#343A40">
-<img src="public/sinfondo.png" alt="">
+<img src="https://github.com/Ernesto-Guerra/Equipo-GGLS/blob/master/Project%20Test/joinder-vue-test/public/sinfondo.png?raw=true" style="margin-left:-2%;width:20%" alt="">
    
     <router-link :to="{ path: '/feed' }">
       <v-btn icon>
