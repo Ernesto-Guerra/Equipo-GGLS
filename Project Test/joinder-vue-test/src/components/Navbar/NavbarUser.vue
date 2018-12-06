@@ -86,7 +86,8 @@ export default {
     data: () => ({
       items: [
          { title: 'preguntas'  ,path:"/preguntas"},
-        { title: 'perfil' ,path:"/profile"},
+        { title: 'perfil' ,path:"/perfil"},
+        { title: 'editar' ,path:"/editar"},
         { title: 'salir' },
       
       ],

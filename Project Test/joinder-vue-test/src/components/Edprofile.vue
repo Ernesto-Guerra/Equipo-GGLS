@@ -4,7 +4,7 @@
 <center><div class="container ">
         
             <form method=""  >
-                  {{findInfo(this.$route.params.id)}}
+                  {{findInfo(this.$auth.getUserId())}}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -31,10 +31,11 @@
                         </div>
                         
                     </div>
-                    <!-- <div class="col-md-2">
-                        <input type="text" class="btn btn-primary" v-if="edit"  value="Guardar cambios" @click="guardar()" />
-                        <input type="text" class="btn btn-primary" v-else value="Editar perfil"  @click="editar()" />
-                    </div> -->
+                    <div class="col-md-2">
+                        <v-btn class="btn btn-primary"  @click="guardar()"> 
+                            Guardar cambios
+                        </v-btn>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -48,9 +49,8 @@
                                                 <label>Matrícula: </label>
                                             </div>
                                             <div class="col-md-4">
-                                                
-                                                <label>{{info.matricula}}</label>
-                                                
+                                                <p>{{info.matricula}}</p>
+                                                <v-textarea  outline name="input-7-4" label="Respuesta" v-model="answer"></v-textarea>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -58,19 +58,7 @@
                                                 <label>Nombre completo</label>
                                             </div>
                                             <div class="col-md-5">
-                                                
-                                                
-                                                <label >{{ user.name}}</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <label>Cumpleaños</label>
-                                            </div>
-                                            <div class="col-md-5">
-                                                
-                                                <label >{{ info.birthday}}</label>
-                                               
+                                                <p>{{ user.name}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -78,8 +66,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-5">
-                                                
-                                                <label >{{ user.email}}</label>
+                                                <p>{{ user.email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -87,8 +74,7 @@
                                                 <label>Telefono</label>
                                             </div>
                                             <div class="col-md-5">
-                                                
-                                                <label >{{info.telephone}}</label>
+                                                <p>{{info.telephone}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -96,8 +82,7 @@
                                                 <label>Carrera</label>
                                             </div>
                                             <div class="col-md-5">
-                                                
-                                                <label >{{info.career}}</label>
+                                                <p>{{info.career}}</p>
                                             </div>
                                         </div>
                                         
@@ -114,31 +99,26 @@
 </template>
 
 <script>
-<<<<<<< HEAD:Project Test/joinder-vue-test/src/components/Visitprofile.vue
-import NavbarUser from './Navbar/NavbarUser.vue';
-=======
 
->>>>>>> 573e3a7e13fe3ce7e085447a9e4194702d440ede:Project Test/joinder-vue-test/src/components/Edprofile.vue
 export default {
     
    data() {
-         return{
-             visit_id:'',          
+         return{          
             user: {},
             infos:[],
-            info:{}
+            info:{},
          };
      },
      created() {
-         this.visit_id = this.$route.id;
            var Header = {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + this.$auth.getToken()
       }
     };
+      
       this.$http
-          .get("api/users/" +this.$route.params.id, Header)
+          .get("api/users/" + this.$auth.getUserId(), Header)
           .then(response => {
               console.log(response);
               console.log(response.data);
@@ -148,10 +128,9 @@ export default {
         this.$http.get("api/information", Header).then(response => {
         this.infos = response.body;
             });
-            
           });
+
      },
-     
     components: {
     },
      methods: {
@@ -161,7 +140,19 @@ export default {
           this.info = element;          
         }
       });
-    }
+    },
+    sendAnswer() {
+      let data = {
+        answer: this.answer,
+        question_id: this.question.id,
+        user_id: this.user_id
+      };
+
+      this.$http.post("api/answer", data).then(response => {
+        this.answers.push(response.body);
+        this.answer = "";
+      });
+    },
   }
 }
 </script>
