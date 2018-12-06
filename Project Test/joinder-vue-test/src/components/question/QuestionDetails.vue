@@ -31,7 +31,7 @@
         <div v-if="ready">
           <div class="row" v-for="answer in answers" :key="answer.id">
               <div class="col col-sm-12">
-                  <answer :answer="answer" :user="user" :question="question" @Uquestion="Rquestion(...arguments)"></answer>
+                  <answer :answer="answer" :user="user" :question="question" @Uquestion="Rquestion(...arguments)" @Danswer="Danswer()"></answer>
               </div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default {
       .then(response => {
         this.question = response.body;
 
-        this.$http.get("api/Qanswers/" + this.question.id).then(response => {
+        this.$http.get("api/Qanswers/" + this.question.id).then((response) => {
           this.answers = response.body;
         });
 
@@ -105,6 +105,11 @@ export default {
       console.log('si me ejecuto');
       console.log(temp);
     },
+    Danswer(){
+              this.$http.get("api/Qanswers/" + this.question.id).then((response) => {
+          this.answers = response.body;
+        });
+    }
   }
 };
 </script>

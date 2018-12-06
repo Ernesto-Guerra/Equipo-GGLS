@@ -72,7 +72,9 @@ export default {
 
       console.log(data)
       this.$http.post("api/report",data, this.Header).then((response)=>{
-        console.log(response)
+        if(response.body == ""){
+          this.$emit('Danswer');
+        }
       })
     }
   }
