@@ -57,7 +57,8 @@ export default {
       answers: [],
       user_id: "",
       users:[],
-      answer_user:{}
+      answer_user:{},
+      test:'',
     };
   },
   components: {
@@ -75,11 +76,12 @@ export default {
     this.$http.get("api/users").then((response)=>{
       this.users=response.body
       console.log(this.users)
-    })
+    });
 
     this.$http
       .get("api/question/" + this.$route.params.id, Header)
       .then(response => {
+
         this.question = response.body;
 
         this.$http.get("api/Qanswers/" + this.question.id).then((response) => {

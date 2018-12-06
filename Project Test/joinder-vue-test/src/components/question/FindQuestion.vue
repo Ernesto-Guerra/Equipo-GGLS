@@ -49,7 +49,7 @@ export default {
     this.$http.get("api/users").then((response) => {
       this.users = response.body;
 
-    this.$http.get("api/question/" + this.$route.params.title,Header).then((response) => {
+    this.$http.get("api/questionNew/" + this.$route.params.title,Header).then((response) => {
         this.questions = response.body;
       });
     });
