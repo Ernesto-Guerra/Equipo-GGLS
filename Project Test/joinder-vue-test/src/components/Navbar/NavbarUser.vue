@@ -1,4 +1,5 @@
 <template>
+     <v-app>
   <v-toolbar dark color="#343A40">
     <v-toolbar-title class="white--text">Title</v-toolbar-title>
    
@@ -72,6 +73,7 @@
    
   
   </v-toolbar>
+       </v-app>
 </template>
 
 <script>
