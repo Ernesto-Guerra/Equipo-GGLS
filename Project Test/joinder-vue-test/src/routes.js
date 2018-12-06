@@ -84,6 +84,20 @@ const router = new VueRouter({
             component:Question,
       
         },
+        {
+            path:"/findquestion/:title",
+            component:FindQuestion,
+            meta:{
+                forAuth:true
+            }
+        },
+        {
+            path:"/findsubject/:subject",
+            component:FindMateria,
+            meta:{
+                forAuth:true
+            }
+        },
     ]
 });
 

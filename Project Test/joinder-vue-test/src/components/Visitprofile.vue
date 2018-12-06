@@ -1,7 +1,6 @@
 <template>
 
 <div>
-    <nav2></nav2>
 <center><div class="container ">
         
             <form method=""  >
@@ -115,7 +114,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD:Project Test/joinder-vue-test/src/components/Visitprofile.vue
 import NavbarUser from './Navbar/NavbarUser.vue';
+=======
+
+>>>>>>> 573e3a7e13fe3ce7e085447a9e4194702d440ede:Project Test/joinder-vue-test/src/components/Edprofile.vue
 export default {
     
    data() {
@@ -150,7 +153,6 @@ export default {
      },
      
     components: {
-    'nav2':NavbarUser
     },
      methods: {
     findInfo(id) {

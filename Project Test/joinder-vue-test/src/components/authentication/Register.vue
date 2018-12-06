@@ -1,6 +1,5 @@
 <template>
   <div>
-    <nav2></nav2>
     <v-app id="inspire">
       <v-content>
         <v-container fluid fill-height>
@@ -75,34 +74,10 @@
       </v-content>
     </v-app>    
     <br>
-
-    <!-- <div class="row justif
-    y-content-center">      
-      <div class="col col-xs-10 col-sm-6">
-        <div class="card">
-          <div class="card-header">
-            Registro
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <input v-model="nombre" class="form-control" type="text" placeholder="Nombre">
-            </div>
-            <div class="form-group">
-              <input v-model="email" class="form-control" type="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input v-model="password" class="form-control" type="password" placeholder="Password">
-            </div>
-            <button class="btn btn-success pull-right">Registro</button>
-          </div>
-        </div>
-      </div>      
-    </div>-->
   </div>
 </template>
 
 <script>
-import NavbarGuest from "../Navbar/NavbarGuest.vue";
     import FormError from '../FormError';
 export default {
   data() {
@@ -113,7 +88,6 @@ export default {
     };
   },
   components: {
-    nav2: NavbarGuest,
     FormError
   },
   methods:{
@@ -127,6 +101,13 @@ export default {
       console.log(data);
       this.$http.post('api/register',data).then((response)=>{
         console.log(response)
+
+        if(response.ok){
+          this.$router.push("/login")
+        }
+        else{
+          alert('Ocurrio un error, intenta de nuevo')
+        }
       })
     },
     validateBeforeSubmit: function() {

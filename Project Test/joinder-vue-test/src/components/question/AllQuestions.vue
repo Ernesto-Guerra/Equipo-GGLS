@@ -29,10 +29,10 @@ export default {
     };
     
 
-    this.$http.get("api/users").then(response => {
+    this.$http.get("api/users").then((response) => {
       this.users = response.body;
 
-      this.$http.get("api/question", Header).then(response => {
+      this.$http.get("api/question", Header).then((response) => {
         this.questions = response.body;
       });
     });
