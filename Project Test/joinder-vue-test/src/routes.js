@@ -58,7 +58,7 @@ const router = new VueRouter({
             }
         },
         {
-            path:"/details:id",
+            path:"/details/:id",
             component:QuestionDetails,
             meta:{
                 forAuth:true
