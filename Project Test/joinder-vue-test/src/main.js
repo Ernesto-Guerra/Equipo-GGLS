@@ -15,7 +15,7 @@ Vue.use(VueResource)
 Vue.use(Auth)
 
 // Ruta del endpoint
-Vue.http.options.root="http://localhost:8000"
+Vue.http.options.root="https://dummie-backend.herokuapp.com"
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
 
 Router.beforeEach(

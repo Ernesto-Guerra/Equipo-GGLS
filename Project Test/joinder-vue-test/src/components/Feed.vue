@@ -10,7 +10,7 @@
       <v-card style="width:98%;margin-left:1%">
         <v-card-title primary-title>
           <div>
-            <h1 class="headline mb-0">¿que quieres saber?</h1>
+            <h1 class="headline mb-0">¿Que quieres saber?</h1>
           </div>
         </v-card-title>
 
