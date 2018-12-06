@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <v-app light>
+    <v-app light >
       <v-content>
 
      
