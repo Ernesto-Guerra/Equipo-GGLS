@@ -1,6 +1,5 @@
 <template>
      <v-app light>
-  <bar ></bar>
     <v-content>
       <section>
         <v-parallax src="http://www.escuelamanagement.eu/wp-content/uploads/Pensamiento-cr%C3%ADtico-y-creativo-1080x675.jpg" height="600">
@@ -101,7 +100,6 @@ Felicidades                </span>
 </template>
 
 <script>
-import NavbarGuest from '../Navbar/NavbarGuest'
 import Question from '../question/AllQuestions'
 
 export default {
@@ -124,7 +122,6 @@ this.$http.get('api/ranking').then(function(responde){
   },
   },
  components:{
-    bar:NavbarGuest,
     ques:Question,
   }
 }

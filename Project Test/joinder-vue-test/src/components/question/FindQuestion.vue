@@ -1,6 +1,6 @@
 <template>
   <div>
-   <navu></navu>
+
     <v-app light>
       <v-content>
 
@@ -26,8 +26,6 @@
 </template>
 
 <script>
-import NavbarUser from "../Navbar/NavbarUser.vue";
-import AllQuestions from "./AllQuestions.vue";
 import Question from './Question.vue'
 export default {
   data() {
@@ -58,8 +56,7 @@ this.validacion = this.$route.params.title
 
   },
   components: {
-    'navu':NavbarUser,
-    AllQuestions,
+
     Question
   },
 

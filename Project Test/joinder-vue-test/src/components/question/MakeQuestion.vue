@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import NavbarUser from "../Navbar/NavbarUser.vue";
+
 
 export default {
   data() {
