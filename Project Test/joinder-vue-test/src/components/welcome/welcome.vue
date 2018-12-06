@@ -64,7 +64,7 @@ Felicidades                </span>
                       <v-card-title primary-title class="layout justify-center">
                         <div class="headline text-xs-center">{{user2.name}}</div>
                       </v-card-title>
-                   <div class="headline text-center"> score:{{user2.score}}</div>
+                   <div class="headline text-center"> Score:{{user2.score}}</div>
                     </v-card>
                   </v-flex>
                   <v-flex xs12 md4 v-model="user">
@@ -75,7 +75,7 @@ Felicidades                </span>
                       <v-card-title primary-title class="layout justify-center">
                         <div class="headline">{{user.name}}</div>
                       </v-card-title>
-                      <div class="headline text-center"> score:{{user.score}}</div>
+                      <div class="headline text-center"> Score:{{user.score}}</div>
                   </v-card>
                 </v-flex>
                 <v-flex xs12 md4 v-model="user3">
@@ -86,7 +86,7 @@ Felicidades                </span>
                     <v-card-title primary-title class="layout justify-center">
                       <div class="headline text-xs-center">{{user3.name}}</div>
                     </v-card-title>
-                 <div class="headline text-center"> score:{{user3.score}}</div>
+                 <div class="headline text-center"> Score:{{user3.score}}</div>
                   </v-card>
                 </v-flex>
               </v-layout>

@@ -3,7 +3,7 @@
  
  <v-toolbar dark color="#343A40">
    
-    <v-toolbar-title class="white--text">Title</v-toolbar-title>   
+<img src="https://github.com/Ernesto-Guerra/Equipo-GGLS/blob/master/Project%20Test/joinder-vue-test/public/text.png?raw=true" style="margin-left:-2.5%;width:25%" alt="">
     
     <router-link :to="{ path: '/' }">
       <v-btn icon>
@@ -12,15 +12,6 @@
     </router-link>
  
     <v-spacer></v-spacer>
-
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
-    <v-autocomplete>
-      <v-slide-x-reverse-transition>
-        <v-icon></v-icon>
-      </v-slide-x-reverse-transition>
-    </v-autocomplete>
           <router-link :to="{ path: 'login' }">
             <v-btn flat>LOGIN</v-btn>
           </router-link>

@@ -13,7 +13,7 @@
 
       <v-card-actions class="grey darken-3 justify-center">
         &copy;2018 —
-        <strong>Vuetify</strong>
+        <strong>QuestionForDummies</strong>
       </v-card-actions>
     </v-card>
   </v-footer>
