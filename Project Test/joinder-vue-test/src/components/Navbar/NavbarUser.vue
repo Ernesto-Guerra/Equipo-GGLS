@@ -17,6 +17,7 @@
     v-model="model"
     no-data-text="no se encontraron coincidencias"
     :items="questions"
+
     >
       <v-slide-x-reverse-transition
       slot="append-outer"
@@ -76,6 +77,7 @@
 </template>
 
 <script>
+import {bus} from '../../main.js';
 export default {
     data: () => ({
       items: [
@@ -88,7 +90,9 @@ export default {
       questions:[],
       subjects:[],
       subject:"",
-      model:'D:'
+      model:'D:',
+      temp: '',
+      questions2:[]
     }),
      created:function(){
 this.getmateria();
@@ -105,22 +109,26 @@ this.getmateria();
         this.subjects.push(element.name);
             
       });
-          console.log() 
-    });
-
-      this.$http.get("api/question", Header).then((response) => {
+            this.$http.get("api/question", Header).then((response) => {
           response.body.forEach(element => {
             this.questions.push(element.title);  
               
           });
       });
+    });
 
+
+        this.questions2=this.questions;
     },
     
     
     methods:{
       search(){
-        this.$router.push("/findquestion/" + this.model)
+        this.temp=this.model
+        this.model='D:'
+        this.questions=this.questions2;
+        this.$router.push("/findquestion/" + this.temp)
+        
       },
 
 

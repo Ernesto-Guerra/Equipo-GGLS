@@ -27,13 +27,15 @@
 
 <script>
 import Question from './Question.vue'
+import router from '../../routes';
 export default {
   data() {
     return {
     questions: [],
     users: [],
     user: {},
-    validacion:''
+    validacion:'',
+    cosa:'false'
     };
   },
   created() {
@@ -55,12 +57,20 @@ export default {
 this.validacion = this.$route.params.title
 
   },
+  updated(){
+
+  },
+
   components: {
 
     Question
   },
 
   methods: {
+
+    recargar(){
+
+    },
 
 
           findUser(id) {

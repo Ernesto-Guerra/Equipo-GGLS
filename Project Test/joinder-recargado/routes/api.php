@@ -30,7 +30,6 @@ Route::put('/users/{id}', 'UserController@update');
 Route::resource('/subjects','SubjectController');
 
 Route::resource('/answer', 'AnswerController');
-Route::resource('/question', 'QuestionController');
 
 Route::resource('/score','UserController');
 

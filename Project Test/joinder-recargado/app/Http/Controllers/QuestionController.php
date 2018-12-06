@@ -33,7 +33,7 @@ class QuestionController extends Controller
 
     public function show($id)
     {
-        return Question::find($id);
+        return Question::Where('title',$id)->get();
     }
 
     /**

@@ -13,14 +13,7 @@
  
     <v-spacer></v-spacer>
 
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
-    <v-autocomplete>
-      <v-slide-x-reverse-transition>
-        <v-icon></v-icon>
-      </v-slide-x-reverse-transition>
-    </v-autocomplete>
+   
           <router-link :to="{ path: 'login' }">
             <v-btn flat>LOGIN</v-btn>
           </router-link>
