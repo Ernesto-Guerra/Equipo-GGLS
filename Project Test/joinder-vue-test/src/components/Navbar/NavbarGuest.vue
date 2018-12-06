@@ -1,6 +1,6 @@
 <template>
 <div>
- 
+    <v-app light>
  <v-toolbar dark color="#343A40">
    
     <v-toolbar-title class="white--text">Title</v-toolbar-title>   
@@ -28,9 +28,9 @@
             <v-btn flat>REGISTER</v-btn>
           </router-link>
   </v-toolbar>
-
+    </v-app >
 </div>
- 
+
 </template>
 
 <script>
