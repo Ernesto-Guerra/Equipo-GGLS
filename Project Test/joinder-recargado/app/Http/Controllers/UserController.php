@@ -104,4 +104,10 @@ class UserController extends Controller
         $usuario=User::orderBy('score', 'DESC')->take(3)->get();
         return $usuario;
     }
+
+    public function getId($email){
+        $user = User::where('email',$email)->get();
+
+        return $user;
+    }
 }

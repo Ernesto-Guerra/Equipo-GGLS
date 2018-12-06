@@ -52,7 +52,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      
     };
   },
   components:{
@@ -62,27 +63,34 @@ export default {
     login(){
       var data ={
         client_id:2,
-        client_secret:'9w4Lg5Ars16BKEg2KegX5uaulo9AOx0R8Ea7RufB',
+        client_secret:'o56kvobO1I4iktn5ZFiXiWbzijvjvKmJMOqzpoPM',
         grant_type:'password',
         username:this.email,
         password:this.password
       }
 
+var Header = {
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "Bearer "+this.$auth.getToken(),
+      }
+    };
+
       this.$http.post("oauth/token",data).then( (response) =>{
         console.log(response);
 
         if(response.ok){
-          this.$auth.setToken(response.body.access_token,response.body.expires_in + Date.now())
-
-          this.$http.get("api/user",data).then(response =>{         
-            this.$auth.setUserId(response.body.id)            
-             this.$router.push("/feed")
-          })           
+          this.$auth.setToken(response.body.access_token,response.body.expires_in + Date.now())                
         }
         else{
           alert('Datos incorrectos')
         }
         
+        this.$http.get("api/userid/"+this.email).then(response =>{         
+          console.log(response)
+            this.$auth.setUserId(response.body[0].id)            
+             this.$router.push("/feed")
+          })     
       })
     },
           validateBeforeSubmit: function() {

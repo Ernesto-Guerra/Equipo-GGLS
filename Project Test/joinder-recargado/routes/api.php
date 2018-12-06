@@ -42,4 +42,6 @@ Route::get('/Qanswers/{question_id}','AnswerController@Qanswers');
 
 Route::get('/ranking','UserController@ranking');
 
+Route::get('/userid/{email}','UserController@getId');
+
 Route::get('/materia/{materia}','QuestionController@materia');

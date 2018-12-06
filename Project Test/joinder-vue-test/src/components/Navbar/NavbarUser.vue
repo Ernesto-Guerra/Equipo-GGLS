@@ -39,13 +39,6 @@
       MATERIAS
       </v-btn>
 
-      <v-btn
-        slot="activator"
-        color="#343A40"
-        dark
-      >
-      {{subject}}
-      </v-btn>
 
       <v-list v-model="subject">
      
