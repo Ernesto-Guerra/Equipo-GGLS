@@ -33,7 +33,7 @@ class QuestionController extends Controller
 
     public function show($id)
     {
-        return Question::Where('title',$id)->get();
+        return Question::find($id);
     }
 
     /**
@@ -73,7 +73,7 @@ class QuestionController extends Controller
         //
     }
     public function materia($materia){
-        return Question::Where('subject',$materia)->get();
+        return Question::where('subject',$materia)->orderBy('created_at','desc')->get();
     }
 
 }
