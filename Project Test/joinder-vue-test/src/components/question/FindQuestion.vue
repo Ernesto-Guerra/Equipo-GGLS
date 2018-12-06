@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
           <div class="col col-xs-10 col-sm-6">
             <div v-if="validacion == 'D:'">
-                <h1> Estas bien meco </h1>
+                <h1> intente de nuevo </h1>
             </div>
                 <div v-else v-for="question in questions" :key="question.id" >
       {{findUser(question.user_id)}}

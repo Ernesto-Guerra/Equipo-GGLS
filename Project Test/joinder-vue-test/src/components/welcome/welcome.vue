@@ -19,7 +19,7 @@
       flat
       hide-no-data
       hide-details
-      label="What state are you from?"
+      label="para preguntar registrarse "
       solo-inverted
     ></v-autocomplete>
     </v-card-text>
@@ -27,14 +27,7 @@
             <div>
               
             </div>
-            <v-btn
-              class="blue lighten-2 mt-5"
-              dark
-              large
-
-            >
-              Buscar
-            </v-btn>
+      
           </v-layout>
         </v-parallax>
       </section>
