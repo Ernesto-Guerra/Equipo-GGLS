@@ -3,7 +3,7 @@
  
  <v-toolbar dark color="#343A40">
    
-    <v-toolbar-title class="white--text">Title</v-toolbar-title>   
+<img src="https://github.com/Ernesto-Guerra/Equipo-GGLS/blob/master/Project%20Test/joinder-vue-test/public/text.png?raw=true" style="margin-left:-2.5%;width:25%" alt="">
     
     <router-link :to="{ path: '/' }">
       <v-btn icon>
