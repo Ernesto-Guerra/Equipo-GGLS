@@ -1,7 +1,7 @@
 <template>
 
   <v-toolbar dark color="#343A40">
-    <v-toolbar-title class="white--text">Title</v-toolbar-title>
+<img src="public/sinfondo.png" alt="">
    
     <router-link :to="{ path: '/feed' }">
       <v-btn icon>
